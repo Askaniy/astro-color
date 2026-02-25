@@ -1,0 +1,14 @@
+[project]
+name = "astro-color"
+version = "0.1.0"
+description = "Library to perform spectral reconstruction, calculate synthetic photometry and colors."
+readme = "README.md"
+authors = [
+    { name = "Askaniy", email = "aaskaniy@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.10.3,<0.11.0"]
+build-backend = "uv_build"
