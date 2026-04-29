@@ -5,7 +5,7 @@ from collections.abc import Callable
 from typing import Self, Any, Final, ClassVar, TypeAlias
 from copy import deepcopy
 
-from .auxiliary import spatial_downscaling
+from .auxiliary import repr_generator, spatial_downscaling
 from .algebra import add_value, add_error, sub_value, sub_error, mul_value, mul_error, div_value, div_error
 from .errors import InconsistentAxesError, InconsistentUncertaintySizeError
 
@@ -191,17 +191,15 @@ class BaseObject:
             return np.array_equal(self.wavelength_nm, other.wavelength_nm) and np.array_equal(self.spectral_dist, other.spectral_dist)
         return False
 
-    #def __repr__(self) -> str:
-    #    output = f'{self.__class__.__name__}('
-    #    if len(self.wavelength_nm > 3:
-    #        output += f'nm=[{self.nm[1]}, {self.nm[2]}, ..., {self.nm[-1]}], '
-    #    else:
-    #        output += f'nm=[{self.nm}], '
-    #    if len(self.spectral_dist > 3):
-    #        output += f'br=[{self.br[1]:.3f}, {self.br[2]:.3f}, ..., {self.br[-1]:.3f}], '
-    #    else:
-    #        output += f'br=[{self.br}], '
-    #    return output[:-2] + ')'
+    def __repr__(self):
+        output = f'{self.__class__.__name__}('
+        output += f'\n\twavelength_nm = [{repr_generator(self.wavelength_nm, is_int=True)}],'
+        if self.ndim == 1:
+            output += f'\n\tspectral_dist = [{repr_generator(self.spectral_dist)}], '
+        elif self.ndim == 2:
+            if self.spatial_shape[0] == 1:
+                f'\tspectral_dist = [[{self.spectral_dist[0]:.3f}, {self.spectral_dist[1]:.3f}, ..., {self.spectral_dist[-1]:.3f}]],'
+        return output + '\n)'
 
 
 

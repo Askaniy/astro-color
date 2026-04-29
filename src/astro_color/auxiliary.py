@@ -583,3 +583,18 @@ def calc_redshift_exp(vel):
     """ Calculates the redshift from the velocity in km/s """
     v = vel / c_kms
     return np.exp(v) - 1
+
+
+def repr_generator(arr_1D: npt.NDArray, is_int: bool = False):
+    format = '' if is_int else '.3f'
+    match len(arr_1D):
+        case 0:
+            return ''
+        case 1:
+            return f'{arr_1D[0]:{format}}'
+        case 2:
+            return f'{arr_1D[0]:{format}}, {arr_1D[1]:{format}}'
+        case 3:
+            return f'{arr_1D[0]:{format}}, {arr_1D[1]:{format}}, {arr_1D[2]:{format}}'
+        case _:
+            return f'{arr_1D[0]:{format}}, {arr_1D[1]:{format}}, ..., {arr_1D[-1]:{format}}'
