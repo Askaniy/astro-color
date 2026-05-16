@@ -12,12 +12,12 @@ It performs synthetic photometry on low-resolution (5-nm wavelength grid step) s
 Use AstroColor in a virtual environment:
 ```sh
 python3 -m venv .venv
-.venv/bin/pip install git+https://github.com/Askaniy/astro-color.git
+.venv/bin/pip install git+https://github.com/Askaniy/astrocolor.git
 ```
 
 Or add AstroColor to your [uv](https://github.com/astral-sh/uv) project:
 ```sh
-uv add git+https://github.com/Askaniy/astro-color.git
+uv add git+https://github.com/Askaniy/astrocolor.git
 ```
 
 
@@ -25,7 +25,7 @@ uv add git+https://github.com/Askaniy/astro-color.git
 
 - Calculate synthetic photometry
 ```py
-import astro_color as ac
+import astrocolor as ac
 
 spectrum = ac.Spectrum(
     wavelength_nm=[400, 500, 600, 700],

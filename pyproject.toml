@@ -1,5 +1,5 @@
 [project]
-name = "astro-color"
+name = "astrocolor"
 version = "0.1.0"
 description = "Library to perform spectral reconstruction, calculate synthetic photometry and colors."
 readme = "README.md"
